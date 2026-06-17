@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Organ Request - MediPortal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="logo">MediPortal</div>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('emergency') }}">Emergency</a></li>
+        
+        <!-- Updated with url_for -->
+        
+        <li><a href="{{ url_for('hospitals') }}">Hospitals</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('blog') }}">Blogs</a></li>
+
+        {% if session.get('user_id') %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Signup</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="form-box">
+    <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Organ Request - MediPortal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">MediPortal</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/login">Log In</a></li>
+    </ul>
+</nav>
+
+<div class="form-box">
+
+
+<h2 style="color: var(--pastel-blue);">Organ Request</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+<form method="POST">
+
+    <input type="text" name="full_name" placeholder="Patient Full Name" required>
+
+    <input type="text" name="address" placeholder="Address" required>
+
+    <input type="text" name="aadhaar" placeholder="Aadhaar Number" required>
+
+    <input type="text" name="hospital" placeholder="Hospital Name" required>
+
+    <label>Patient Disease</label>
+    <select name="disease">
+        <option value="None">None</option>
+        <option value="Kidney Failure">Kidney Failure</option>
+        <option value="Liver Failure">Liver Failure</option>
+        <option value="Heart Disease">Heart Disease</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <select name="organ_type" required>
+        <option value="">Select Organ</option>
+        <option value="Kidney">Kidney</option>
+        <option value="Liver">Liver</option>
+        <option value="Heart">Heart</option>
+        <option value="Lungs">Lungs</option>
+        <option value="Pancreas">Pancreas</option>
+        <option value="Cornea">Cornea (Eye)</option>
+    </select>
+
+    <input type="text" name="location" placeholder="Hospital Location" required>
+
+    <select name="urgency" required>
+        <option value="">Select Urgency</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+        <option value="Critical">Critical</option>
+    </select>
+
+    <input type="text" name="contact_info" placeholder="Contact Information" required>
+
+    <button type="submit">Submit Organ Request</button>
+
+</form>
+
+
+</div>
+
+</body>
+</html>
+
+</div>
+
+</body>
+</html>

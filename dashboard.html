@@ -1,0 +1,137 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+<title>MediPortal Dashboard</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+.chart-container {
+    width: 60%;
+    margin: auto;
+}
+
+.bar {
+    margin: 15px 0;
+}
+
+.bar span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.progress {
+    width: 100%;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress div {
+    height: 20px;
+    color: white;
+    text-align: right;
+    padding-right: 5px;
+    line-height: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">MediPortal</div>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('emergency') }}">Emergency</a></li>
+        <li><a href="{{ url_for('hospitals') }}">Hospitals</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('blog') }}">Blogs</a></li>
+
+        {% if session.get('user_id') %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Signup</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<h1 style="text-align:center;">Platform Statistics</h1>
+
+<div class="dashboard-container">
+
+<div class="stat-card">
+<h2>{{ donors }}</h2>
+<p>Blood Donors</p>
+</div>
+
+<div class="stat-card">
+<h2>{{ requests }}</h2>
+<p>Blood Requests</p>
+</div>
+
+<div class="stat-card">
+<h2>{{ organs }}</h2>
+<p>Organ Donors</p>
+</div>
+
+<div class="stat-card">
+<h2>{{ request }}</h2>
+<p>Organ Request</p>
+</div>
+
+<div class="stat-card">
+<h2>{{ hospitals }}</h2>
+<p>Hospitals Registered</p>
+</div>
+
+</div>
+
+<!-- HTML-based Chart Replacement -->
+<div class="chart-container">
+
+<h2 style="text-align:center;">MediPortal Data Overview</h2>
+
+<div class="bar">
+<span>Blood Donors</span>
+<div class="progress">
+<div style="width: {{ donors }}%; background:#ff6b6b;">{{ donors }}</div>
+</div>
+</div>
+
+<div class="bar">
+<span>Blood Requests</span>
+<div class="progress">
+<div style="width: {{ requests }}%; background:#ffa94d;">{{ requests }}</div>
+</div>
+</div>
+
+<div class="bar">
+<span>Organ Donors</span>
+<div class="progress">
+<div style="width: {{ organs }}%; background:#74c0fc;">{{ organs }}</div>
+</div>
+</div>
+
+<div class="bar">
+<span>Organ Requests</span>
+<div class="progress">
+<div style="width: {{ request }}%; background:#63e6be;">{{ request }}</div>
+</div>
+</div>
+
+<div class="bar">
+<span>Hospitals</span>
+<div class="progress">
+<div style="width: {{ hospitals }}%; background:#845ef7;">{{ hospitals }}</div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

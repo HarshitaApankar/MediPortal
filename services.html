@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services - MediPortal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+
+<nav>
+    <div class="logo">MediPortal</div>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('emergency') }}">Emergency</a></li>
+        
+        <!-- Updated with url_for -->
+        
+        <li><a href="{{ url_for('hospitals') }}">Hospitals</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('blog') }}">Blogs</a></li>
+
+        {% if session.get('user_id') %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Signup</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<!-- Blood Services -->
+<div class="services-container">
+
+<div class="card" style="border-top-color: var(--pastel-pink);">
+<h3>Blood Donation</h3>
+<p>Register as a blood donor and help save lives in emergency situations.</p>
+<a href="/blood_donor">
+<button>Donate Blood</button>
+</a>
+</div>
+
+<div class="card" style="border-top-color: var(--pastel-blue);">
+<h3>Blood Request</h3>
+<p>Need blood urgently? Submit a request and find available donors.</p>
+<a href="/blood_request">
+<button>Request Blood</button>
+</a>
+</div>
+
+<div class="card" style="border-top-color: var(--pastel-blue);">
+<h3>Search Blood Donor</h3>
+<p>Find blood donors by blood group and city quickly.</p>
+<a href="/search_donor">
+<button>Search Blood Donor</button>
+</a>
+</div>
+
+</div>
+
+
+<!-- Organ Services -->
+<div class="services-container">
+
+<div class="card" style="border-top-color: var(--pastel-green);">
+<h3>Organ Donation</h3>
+<p>Register as an organ donor and give someone a second chance at life.</p>
+<a href="/organ_donor">
+<button>Register as Donor</button>
+</a>
+</div>
+
+<div class="card" style="border-top-color: var(--pastel-purple);">
+<h3>Organ Request</h3>
+<p>Submit an organ request for transplant patients in need.</p>
+<a href="/organ_request">
+<button>Request Organ</button>
+</a>
+</div>
+
+<div class="card" style="border-top-color: var(--pastel-purple);">
+<h3>Search Organ Donor</h3>
+<p>Find organ donors by organ type and city.</p>
+<a href="/search_organ">
+<button>Search Organ</button>
+</a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

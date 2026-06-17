@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediPortal</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #4c2d36;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #5c314b;
+        }
+
+        .main {
+            flex: 1;
+            padding: 30px;
+            background: #f4f7fb;
+        }
+
+        .top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-left a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .nav-left a:hover {
+            color: #1abc9c;
+        }
+
+        .user-menu {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 35px;
+            background: white;
+            width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .dropdown ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown ul li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .user-menu:hover .dropdown {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>MediPortal</h2>
+
+        <a href="{{ url_for('profile') }}">👤 Profile</a>
+        <a href="{{ url_for('appointments') }}">📅 Appointments</a>
+        <a href="{{ url_for('prescriptions') }}">💊 Prescriptions</a>
+        <a href="{{ url_for('reports') }}">🧪 Reports</a>
+        <a href="{{ url_for('billing') }}">💳 Billing</a>
+        <a href="{{ url_for('settings') }}">⚙️ Settings</a>
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+    </div>
+
+    <div class="main">
+
+        <!-- TOP NAVBAR -->
+        <div class="top-navbar">
+
+            <div class="nav-left">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('services') }}">Services</a>
+            </div>
+
+            <div class="user-menu">
+                👤
+                <div class="dropdown">
+                    <ul>
+                        <li><a href="{{ url_for('profile') }}">My Profile</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        {% block content %}{% endblock %}
+
+    </div>
+
+</body>
+</html>

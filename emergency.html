@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emergency - MediPortal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+    <div class="logo">MediPortal</div>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('emergency') }}">Emergency</a></li>
+        
+        <!-- Updated with url_for -->
+        
+        <li><a href="{{ url_for('hospitals') }}">Hospitals</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('blog') }}">Blogs</a></li>
+
+        {% if session.get('user_id') %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Signup</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+    <div class="emergency-banner">
+        <h1>EMERGENCY CONTACTS</h1>
+        <p>In case of immediate life-threatening situations, call these numbers:</p>
+        <div class="emergency-number">911 / 112</div>
+        <p>Nearest Ambulance: 108</p>
+    </div>
+
+    <div class="services-container">
+        <div class="card">
+            <h3>Nearest Hospital</h3>
+            <p>St. Mary's General Hospital</p>
+            <p>2.5km Away</p>
+
+        </div>
+
+        <div class="card">
+            <h3>Nearest Hospital</h3>
+            <p>Krishna Multispecialist General Hospital</p>
+            <p>2.1km Away</p>
+
+        </div>
+
+        <div class="card">
+            <h3>Nearest Hospital</h3>
+            <p>St. frances General Hospital</p>
+            <p>1.5km Away</p>
+         </div>
+
+         <div class="card">
+            <h3>Nearest Hospital</h3>
+            <p>Marigold General Hospital</p>
+            <p>1.2km Away</p>
+
+        </div>
+
+        <div class="card">
+            <h3>Nearest Hospital</h3>
+            <p>NAMO General Hospital</p>
+            <p>1.45km Away</p>
+
+        </div>
+
+        <div class="card">
+            <h3>Nearest Hospital</h3>
+            <p>Prayosha General Hospital</p>
+            <p>1.1km Away</p>
+
+        </div>
+
+
+        <div class="card">
+            <h3>24/7 Helpline</h3>
+            <p>0800-123-4567</p>
+        </div>
+
+        <div class="card">
+            <h3>🚑 Ambulance</h3>
+          <p>Dial: 102 / 108</p>
+          </div>
+
+    </div>
+
+     <div style="text-align: center; margin-top: 30px;">
+        <a href="/" style="background: #333; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">← Back to Home</a>
+</body>
+</html>

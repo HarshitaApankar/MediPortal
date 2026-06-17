@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <h1>My Profile</h1>
+
+    {% if user %}
+        <p><strong>Name:</strong> {{ user[0] }}</p>
+        <p><strong>Email:</strong> {{ user[1] }}</p>
+    {% else %}
+        <p>User not found</p>
+    {% endif %}
+</div>
+
+{% endblock %}

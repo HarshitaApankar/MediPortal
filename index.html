@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPortal - Home</title>
+    <!-- Importing a cute, rounded aesthetic font -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        
+        :root{
+
+         --pastel-pink:#ffd6e0;
+         --pastel-purple:#e6d8ff;
+         --pastel-blue:#d9f3ff;
+         --pastel-green:#dff5e1;
+         --pastel-peach:#ffe6d8;
+
+         --primary:#b8a4ff;
+         --secondary:#ff8fa3;
+
+         --text-dark:#3a3a3a;
+         --text-light:#7a7a7a;
+
+         --card-bg:#ffffff;
+         --soft-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+        }
+
+    body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#fff5f7,#f6f3ff,#eef9ff);
+margin:0;
+color:var(--text-dark);
+}
+
+
+        nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 60px;
+background:white;
+box-shadow:var(--soft-shadow);
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:28px;
+color:#b8a4ff;
+}
+
+   .hero{
+width:65%;
+margin:80px auto;
+background:white;
+padding:60px;
+border-radius:25px;
+box-shadow:var(--soft-shadow);
+text-align:center;
+} 
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:48px;
+color:#7c2d2d;
+margin-bottom:10px;
+}
+
+.hero h2{
+font-size:20px;
+color:#555;
+font-weight:400;
+font-style:italic;
+}
+
+.hero p{
+color:#777;
+line-height:1.6;
+margin-top:20px;
+}
+
+.emergency-btn{
+
+background:linear-gradient(135deg,#ff8fa3,#ff6b6b);
+color:white;
+padding:18px 40px;
+border:none;
+border-radius:40px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+margin-top:30px;
+box-shadow:0 8px 20px rgba(255,120,120,0.3);
+
+}
+
+.small-btn{
+padding:12px 28px;
+border-radius:30px;
+border:none;
+margin:15px;
+font-weight:500;
+cursor:pointer;
+}
+
+.blood-btn{
+background:var(--pastel-peach);
+}
+
+.organ-btn{
+background:#5b6f68;
+color:white;
+}
+
+.bell{
+position:fixed;
+bottom:30px;
+right:30px;
+width:60px;
+height:60px;
+background:#ff7f7f;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+color:white;
+box-shadow:var(--soft-shadow);
+}
+</style>
+</head>
+<body>
+
+    <!-- FULL ORIGINAL NAVIGATION BAR -->
+    <nav>
+    <div class="logo">MediPortal</div>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('emergency') }}">Emergency</a></li>
+        
+        <!-- Updated with url_for -->
+        
+        <li><a href="{{ url_for('hospitals') }}">Hospitals</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('blog') }}">Blogs</a></li>
+
+    
+<div class="user-menu">
+        <div class="avatar">👤🩷</div>
+       <div class="dropdown">
+    {% if session.get('user_id') %}
+        <div class="user-info">
+            <strong>{{ session.get('username') }}</strong>
+        </div> 
+
+        <ul>
+            <ul>
+    <li><a href="{{ url_for('profile') }}">My Profile</a></li>
+    <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
+    <li><a href="{{ url_for('prescriptions') }}">Prescriptions</a></li>
+    <li><a href="{{ url_for('reports') }}">Lab Reports</a></li>
+    <li><a href="{{ url_for('billing') }}">Billing</a></li>
+    <li><a href="{{ url_for('settings') }}">Settings</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+</ul>
+        </ul>
+    {% else %}
+        <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        </ul>
+    {% endif %}
+</div>
+        
+</nav>
+
+    <div class="home-content">
+        <div class="info-box">
+            <!-- 1. The Aesthetic Heading -->
+            <h1 class="main-heading">Emergency Medical Portal</h1>
+            
+            <!-- 2. The Sub-heading -->
+            <p class="sub-heading"><i><center>Connecting heart-to-heart when every second counts.</center></i></p>
+
+            <!-- 3. The 3-Line Description -->
+            <div class="description">
+                <p><center><i>MediPortal is a community-driven digital platform designed to provide fast and reliable medical assistance during emergencies. <br>In critical situations, even a few seconds can make a life-saving difference. <br>Our goal is to bridge the gap between people who need urgent help and those who are willing to support them. <br>Whether someone requires immediate medical attention, a blood donor, or organ donation assistance, <br>MediPortal acts as a central hub that connects individuals with the right resources at the right time.<br>
+
+The platform encourages community participation by allowing users to register as blood donors or organ donors, <br>helping build a network of compassionate individuals who are ready to contribute to saving lives.<br> By maintaining organized donor information and hospital resources,<br> MediPortal helps patients and families quickly locate support without wasting precious time searching through multiple sources.<br>
+
+In addition to donor registration, MediPortal also provides important emergency contact information, <br>nearby hospital listings, and helpful medical awareness content through its blog section. <br>These features aim to educate people about health emergencies and promote a culture of preparedness and care within society. <br>Through MediPortal, we hope to ensure that no one feels alone during a medical crisis and that help is always just a heartbeat away</i><br></p>
+            </div>
+
+             <div class="quick-actions">
+
+<a href="/emergency" class="action-card emergency-btn">
+Emergency Help
+</a>
+
+<a href="/blood_donor" class="action-card blood-btn">
+Blood Donor
+</a>
+
+<a href="/organ_donor" class="action-card organ-btn">
+Organ Donor
+</a>
+
+</div>
+        </div>
+    </div>
+
+    
+        
+    <!-- Floating Bell (Bottom Right) -->
+    <a href="/emergency" style="position: fixed; bottom: 30px; right: 30px; background: #ff7675; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000;">
+        🔔
+    </a>
+
+</body>
+</html>
